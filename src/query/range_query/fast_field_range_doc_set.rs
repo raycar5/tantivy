@@ -39,7 +39,7 @@ impl VecCursor {
     }
 }
 
-pub(crate) struct RangeDocSet<T> {
+pub struct RangeDocSet<T> {
     /// The range filter on the values.
     value_range: RangeInclusive<T>,
     column: Column<T>,
@@ -61,7 +61,7 @@ pub(crate) struct RangeDocSet<T> {
 
 const DEFAULT_FETCH_HORIZON: u32 = 128;
 impl<T: Send + Sync + PartialOrd + Copy + Debug + 'static> RangeDocSet<T> {
-    pub(crate) fn new(value_range: RangeInclusive<T>, column: Column<T>) -> Self {
+    pub fn new(value_range: RangeInclusive<T>, column: Column<T>) -> Self {
         let mut range_docset = Self {
             value_range,
             column,
